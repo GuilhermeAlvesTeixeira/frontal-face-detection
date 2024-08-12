@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca OpenFrameworks</title>
+    <link rel="stylesheet" href="style/styles.css">
+</head>
+<body>
+    <header>
+        <h1> OpenFrameworks</h1>
+    </header>
+	
+    <main>
+	
+		<center>
+			<img src="imagens/indexpage.png" alt="indexpage" style="width: 100%; height: auto;">
+		</center>
+		
+		<p style="font-size: 14px; text-align: center" >
+			Figura 01: Tela inicial da página web do openframeworks.
+		</p>
+	
+        <section>
+            <h2>O que é o OpenFrameworks?</h2>
+            <p style="text-align: justify; text-indent: 30px;">OpenFrameworks é uma biblioteca de código aberto escrita em C++ que simplifica o processo de criar obras interativas, animações, e aplicações gráficas. Ela é especialmente popular entre artistas digitais, designers e desenvolvedores que trabalham com mídia interativa.</p>
+        </section>
+
+        <section>
+            <h2>Características</h2>
+            <ul>
+                <li>Fácil de usar para criar gráficos 2D e 3D.</li>
+                <li>Integração com bibliotecas populares como OpenCV e OpenGL.</li>
+                <li>Compatível com múltiplas plataformas, incluindo Windows, macOS, Linux, Android, e iOS.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Comunidade</h2>
+            <p style="text-align: justify; text-indent: 30px;">OpenFrameworks possui uma comunidade ativa e uma vasta coleção de exemplos e addons que facilitam a expansão das funcionalidades do framework.</p>
+        </section>
+		
+		<h2>Possíveis utilizações da biblioteca no campo da multimídia digital interativa</h2>
+			<section>
+				<p style="text-align: justify; text-indent: 30px;">
+					<ul>
+						<li><b>Instalações Interativas:</b> O Openframeworks pode ser usado para criar instalações em que os visitantes interagem com projetos visuais, sons e outros elementos digitais através de gestos, movimento, toque ou voz. </li>
+						
+						<li><b>Interfaces Tangíveis: </b> Desenvolvimento de interfaces físicas que interagem com o digital, como mesas sensíveis ao toque ou dispositivos de entrada personalizados. </li>
+						
+						<li><b>Simulações Interativas:</b> Pode ser usado em simulações que exigem alta interatividade, como simulações de física ou sistemas comportamentais complexos.</li>
+						
+						<li><b>Realidade Aumentada e Realidade Virtual:</b> O OpenFrameworks pode ser integrado com tecnologias de AR e VR para criar ambientes imersivos e interativos, permitindo a criação de experiências onde os usuários interagem com objetos virtuais sobrepostos ao mundo real ou dentro de ambientes completamente virtuais.</li>
+						
+						<li><b>Mapping de Projeção:</b> É usado para criar projeções mapeadas interativas em superfícies complexas, como edifícios ou esculturas, onde a imagem projetada interage com o ambiente ou com o público.</li>
+						
+						<li><b>Visão Computacional:</b> O Openframeworks pode ser utilizado em conjunto com projetos que envolvem visão computacional, permitindo que desenvolvedores, artistas e pesquisadores criem projetos que capturam, processam e analisam imagem e vídeos em tempo real.</li>
+						
+					</ul>	
+				</p>
+			</section>                        
+		
+		
+		<h2>Qual implementação será feita utilizando o Openframeworks?</h2>
+			
+			<section>
+				<p style="text-align: justify; text-indent: 30px;">
+				Escolhi fazer uma implementação de visão computacional. A ideia é capturar o rosto frontal de um usuário através de uma webcam, utilizando um algoritmo de detecção de objetos Haarcascade, devido à sua eficácia, simplicidade de implementação e pela disponibilidade de Haarcascades na internet por conta da comunidade ativa. O openFrameworks facilita a integração com bibliotecas como OpenCV, permitindo que eu crie uma aplicação interativa que pode detectar e analisar expressões faciais de forma dinâmica. Essa implementação é ideal para projetos que envolvem interação entre o usuário e o computador, como instalações artísticas, aplicativos de segurança ou ferramentas de reconhecimento facial.</p>
+			</section>
+			
+			<section>
+            <h2>Mas afinal de contas, o que é um Haarcascade?</h2>
+				<p style="text-align: justify; text-indent: 30px;">Haarcascade é um algoritmo de detecção de objetos, geralmente utilizado para identificar faces em imagens e vídeos. Ele funciona treinando um classificador com uma série de imagens positivas (que contêm o objeto) e imagens negativas (que não contêm o objeto). Uma vez treinado, o classificador pode detectar o objeto desejado em novas imagens em tempo real com alta precisão.
+			</section>
+			
+			<section>
+            <h3>Features de haar</h3>
+				<p style="text-align: justify; text-indent: 30px;"> As features de Haar são padrões usados no algoritmo de detecção de objetos Haar Cascade para identificar regiões específicas de interesse em imagens, como bordas, linhas ou áreas com contraste distinto. 
+			</section>
+			
+			<center>
+				<img src="imagens/haar.png" alt="haar" style="width: 50%; height: auto;">
+			</center>
+			
+			<p style="font-size: 14px; text-align: center" >
+				Figura 02: Features de Haar.
+			</p>
+			
+			<section>
+				<p style="text-align: justify; text-indent: 30px;">
+					<ul>
+						<li><b>Edge Features: </b> são usadas para detectar bordas ou transições entre áreas de diferentes intensidades de pixel (por exemplo, a transição de uma área clara para uma área escura).
+						Na figura, as áreas brancas e pretas representam regiões onde a intensidade dos pixels é comparada. A diferença na soma das intensidades dos pixels nas áreas pretas e brancas é usada para determinar se uma borda está presente.
+						</li>
+						
+						<li><b>Line Features: </b> essas características são usadas para detectar a presença de linhas horizontais ou verticais. Por exemplo, uma linha clara entre duas linhas escuras, ou vice-versa. Na figura, há uma área clara entre duas áreas escuras, indicando a presença de uma linha </li>
+						
+						<li><b>Four-Rectangle Features: </b> essas características são mais complexas e são usadas para detectar variações de intensidade em padrões mais detalhados, como por exemplo: capturar mudanças de intensidade em diferentes direções. </li>
+					</ul>	
+				</p>
+			</section>
+
+			<section>
+            <h3>Como essas features são usadas?</h3>
+				<p style="text-align: justify; text-indent: 30px;"> O algoritmo calcula a diferença entre as somas das intensidades dos pixels nas regiões escuras e claras definidas por cada feature. Se a diferença atender a certos critérios, a feature pode ser usada para identificar uma região da imagem que potencialmente contém o objeto de interesse.
+			</section>
+
+			<h3>Como farei o treinamento das imagens?</h3>
+			
+			<p>
+			 Como não tenho recursos para fazer o treinamento de imagens usando algoritmo de haarcascade, utilizarei um documento XML contendo o output do treinamento de rostos frontais. O documento com os dados de treinamento podem ser encontrados através do link: 
+			  <a href="https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_alt.xml">haarcascade_frontalface_alt.xml</a>.
+			</p>
+			
+			
+			<p>
+				Para informações mais detalhadas sobre o método haarcascade, indico o artigo de Michael Jones e Paul Viola:
+				<a href="https://www.cs.cmu.edu/~efros/courses/LBMV07/Papers/viola-cvpr-01.pdf">Ler artigo</a>.
+			</p>
+			
+			<section>
+			
+            <h2>Ferramentas usadas</h2>
+				<li><b>Linguagem C++ : </b> Linguagem padrão utilizada pelo Openframeworks.
+				</li>
+				
+				<li><b>Visual Studio IDE: </b> O Visual Studio IDE é o ambiente de desenvolvimento da Microsoft. Ele será bem útil para trabalhar com o OpenFrameworks devido a sua configuração "Desktop Development with C++" que disponibiliza recursos e ferramentas para desenvolver aplicações modernas com C++. </li>
+						
+				<li><b>Openframeworks: </b> biblioteca que utilizaremos para fazer nossa aplicação. </li>
+				
+				<li><b>OpenCV: </b> biblioteca que utilizaremos para trabalhar com visão computacional. </li>
+				
+			</section>
+			
+			<h2> Sobre o Openframeworks</h2>
+			
+			<p style="text-align: justify; text-indent: 30px;">
+					Ao criar um projeto no Openframeworks, o ambiente de desenvolvimento (Microsoft Visual Studio) gera uma estrutura de pastas e arquivos padrão que serve como ponto de partida para o desenvolvimento de aplicativos interativos. Como muitos recursos são ofertados pela biblioteca, mostrarei apenas os que utilizei em meu projeto.
+			</p>
+				
+				<h3>Estrutura de Pastas e Arquivos Padrão</h3>
+				
+				<h4>1. src/ (Source Files)</h4>
+				
+				<li><b>main.cpp: </b> Contém a função main() do projeto, onde a aplicação é inicializada. Essa função chama o método ofSetupOpenGL() para configurar a janela principal e, em seguida, invoca ofRunApp() para rodar a aplicação.
+				</li>
+				
+				<li><b>ofApp.h: </b> Cabeçalho da classe ofApp. Aqui você define as variáveis e funções que serão usadas na lógica do seu aplicativo. É onde você declara métodos como setup(), update(), e draw(). (Bem semelhante ao Processing). </li>
+						
+				<li><b>ofApp.cpp: </b>  Implementação da classe ofApp. Neste arquivo, você escreve o código para os métodos declarados em ofApp.h, como setup(), update(), draw(), keyPressed(), entre outros.</li>
+				
+				<h4>2. bin/ (Binary Files) </h4>
+				
+				<li> Contém os arquivos binários gerados pelo compilador. Após compilar o projeto, os executáveis e outros arquivos estarão localizados em /bin.</li>
+				
+				<h4>2.1. bin/data/ (Data Files) </h4>
+				<li> Subpasta de bin/. É aqui que iremos colocar as imagens e arquivos .XML (como o nosso haarcascade).</li>
+			
+						
+			<section>
+			
+            <h2>Metodologia</h2>
+				
+				<p style="text-align: justify; text-indent: 30px;">
+					Primeiramente, abri a ferramenta Microsoft Visual Studio e criei um projeto com Openframeworks através do project generator (aplicação que vem instalado junto com o openframeworks).
+				</p>
+				
+				<center>
+					<img src="imagens/project-generator.png" alt="project-generator" style="width: 50%; height: auto;>
+				'</center>
+				
+				<p style="font-size: 14px; text-align: center" >
+					Figura 03: Project Generator do Openframeworks (com ele podemos criar nossos projetos utilizando a biblioteca openframeworks).
+				</p>
+								
+				<p style="text-align: justify; text-indent: 30px;">
+					Em 'ofApp.h' importei a biblioteca "ofxCvHaarFinder.h"que será responsável por localizar e ler o arquivo XML do nosso haarcascade. Em seguida criamos uma variável chamada "camera" pertencente a classe "ofVideoGrabber" que será utiizada para fazer a leitura da webcam. Também criaremos as variáveis color (para obter os pixels com 3 canais de cores), variável gray (para obter os pixels com 1 canal de cor) e variável haar (nosso haarcascade).
+				</p>
+				
+				<center>
+					<img src="imagens/ofAppH.png" alt="ofAppH" style="width: 60%; height: auto;>
+				'</center>
+				
+				<p style="font-size: 14px; text-align: center" >
+					Figura 04: "ofApp.h".
+				</p>
+
+				<p style="text-align: justify; text-indent: 30px;">
+					Em seguida, em "ofApp.cpp" modifiquei a função default "void ofApp::setup()" para configurar o tamanho da janela com a captura da imagem da webcam (utilizei as dimensões 640 x 480). Por conseguinte, configurei as variáveis "color" e "gray" para alocar os pixels fornecidos pela webcam e configurei o caminho da variável "haar". Por fim, usei o método "setScaleHaar()" para otimizar a perfomance da câmera.
+				</p>
+				
+				<center>
+					<img src="imagens/void_setup.png" alt="void_setup" style="width: 80%; height: auto;>
+				'</center>
+				
+				<p style="font-size: 14px; text-align: center" >
+					Figura 05: "função ofApp::setup".
+				</p>
+
+				<p style="text-align: justify; text-indent: 30px;">
+					Na função default "offApp::update" atualizaremos os dados obtidos pela variável câmera. para isso, usei o metodo update() da classe "OfVideoGrabber". Em seguida fiz uma estrutura condicional e passei um parâmetro booleano que verifica quando há novos frames. Dentro dessa estrutura condicional usei o método setFromPixels(), usando o parâmetro camera.getPixels() para capturar os pixels coloridos da câmera. Em seguida, armazenei essa informação na variável "gray" que fará automaticamente a conversão para 1 canal de cor (escala de cinza). Por fim, chamei o método "findHaarObject()" e passei o parâmetro "gray" para fazer a identificação dos rostos (usamos a escala de cinza para melhorar a perfomance da aplicação). 
+				</p>
+
+				<center>
+					<img src="imagens/ofAppCPP.png" alt="ofAppCPP" style="width: 80%; height: auto;>
+				'</center>
+				
+				<p style="font-size: 14px; text-align: center" >
+					Figura 06: "função ofApp::update".
+				</p>
+				
+				<p style="text-align: justify; text-indent: 30px;">
+					Na função default "ofApp::draw()", utilizaremos o método "draw()" da classe "ofxCvColorImage" para capturar a imagem pela webcam (passei os parâmetros (0,0) como posição X e Y).
+					Em seguida, para desenhar os "bounding boxes" (quadradinhos que ficam ao redor dos objetos) criei um laço de repetição será iniciado toda vez que um rosto for detectado e encerrado quando não houver rostos. Dentro desse laço, criei um retângulo de cor branca que ficará ao redor dos rostos que forem detectados.
+				</p>
+	
+				<center>
+					<img src="imagens/draw.png" alt="draw" style="width: 80%; height: auto;>
+				'</center>
+				
+				<p style="font-size: 14px; text-align: center" >
+					Figura 07: "função ofApp::draw()".
+				</p>
+				
+			</section>
+		
+		<section>
+            <h2>Resultado</h2>
+            <p> Com todos os parâmetros configurados, rodei a aplicação e obtive o seguinte resultado:</p>
+			
+			
+	<div class= "video-container">
+		<center>
+			<video width="640" height="360" controls>
+				<source src="Video/Openframeworks.mp4" type="video/mp4">
+				Seu navegador não suporta a tag de vídeo.
+			</video>
+		</center>
+	</div>
+        </section>
+			
+	<section>
+		<p>Você também pode acessar o vídeo pelo Youtube: <a href="https://www.youtube.com/watch?v=qDpk932Vw1Y">Ir para youtube.com.br</a>.</p>
+	</section>
+	</main>
+
+    <footer>
+        <p>© 2024 - Biblioteca OpenFrameworks</p>
+    </footer>
+</body>
+</html>
